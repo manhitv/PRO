@@ -16,6 +16,7 @@ import evaluate
 import numpy as np
 import torch
 import random
+from tqdm import tqdm
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--type_of_question', type=str)
@@ -37,7 +38,7 @@ print(torch.cuda.is_available())
 
 # Set a seed value
 seed_value = 10
-num_beams = 10
+num_beams = 1 # 10
 
 os.environ['PYTHONHASHSEED'] = str(seed_value)
 random.seed(seed_value)
@@ -53,7 +54,7 @@ with open(f'{config.output_dir}/{args.model}_generations_all_{args.dataset}.pkl'
 
 rouge_types = ['rouge1', 'rouge2', 'rougeL']
 
-for sequence_dict in sequences:
+for sequence_dict in tqdm(sequences):
     reference_answers = sequence_dict['answer']
     for answer in reference_answers:
         references = [answer]

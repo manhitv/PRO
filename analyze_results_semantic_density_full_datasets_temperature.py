@@ -45,10 +45,11 @@ predictive_entropy_over_concepts_all_list = []
 rougeL_among_generations_all_list = []
 
 run_ids_to_analyze = args.run_ids
+num_beams = 1 # 10
 
 list_df = []
 for correctness_threshold in [0.3]:
-    for beam_id in range(10):
+    for beam_id in range(num_beams):
         for run_id in run_ids_to_analyze:
             print('beam_group_{}'.format(beam_id))
 
@@ -303,6 +304,7 @@ for correctness_threshold in [0.3]:
     
     list_df.append(result_dict)
 
+### Save results
 df = pd.DataFrame(list_df).rename(columns={
     'semantic_density_auroc': 'SD',
     'entropy_over_concepts_auroc': 'SE',
@@ -312,13 +314,23 @@ df = pd.DataFrame(list_df).rename(columns={
     'predictive_entropy_auroc': 'PE',
     'average_log_likelihood_auroc': 'ALL',
     'neg_log_likelihood_auroc': 'NLL'
-})
-    # with open(f'{config.result_dir}/overall_results_beam_search_{args.model}_{args.dataset}_temperature{args.temperature}_threshold{args.correctness_threshold}.pkl', 'wb') as f:
-    #     pickle.dump(overall_result_dict, f)
+}) # AUROC
 
-    # with open(f'{config.result_dir}/{args.model}_{args.dataset}_sequence_embeddings.pkl', 'wb') as f:
-    #     pickle.dump(sequence_embeddings_dict, f)
+selected_cols = ['SD', 'SE', 'Deg', 'NE', 'PE', 'ALL', 'NLL', 'PRO'] # , 'threshold'
+for c in df.columns:
+    df[c] = df[c].apply(lambda x: round(x, 3))
+df[selected_cols].to_csv(f'{config.result_dir}/AUC_{model_name}_{args.dataset}.csv', index=False)
 
-    # Store data frame as csv
-    # accuracy_verification_df = result_df[['most_likely_generation', 'answer', 'correct']]
-    # accuracy_verification_df.to_csv('accuracy_verification.csv')
+df = pd.DataFrame(result_df).rename(columns={
+    'semantic_density': 'SD',
+    'predictive_entropy_over_concepts': 'SE',
+    'average_contradict_prob': 'Deg',
+    'average_predictive_entropy': 'NE',
+    'predictive_entropy': 'PE',
+    'all_scores': 'ALL',
+    'neg_log_likelihood_of_most_likely_gen': 'NLL',
+    'list_pro': 'PRO',
+    'correct': 'correct'
+    }) # raw uncertainty scores
+
+df[selected_cols + ['correct']].to_csv(f'{config.result_dir}/raw_scores_{model_name}_{args.dataset}.csv', index=False)

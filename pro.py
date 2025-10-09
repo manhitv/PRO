@@ -58,7 +58,7 @@ for i in tqdm.tqdm(range(len(generations))):
         df.loc[i, f'avg_nll_{beam_id}'] = likelihood[f'average_neg_log_likelihood_of_beam_search_gen_{beam_id}'].item()
         df.loc[i, f'nll_{beam_id}'] = likelihood[f'neg_log_likelihood_of_beam_search_gen_{beam_id}'].item()
 
-df.to_csv(f'{config.result_dir}/our_score_multi_{model}_{dataset}.csv', index=False)
+df.to_csv(f'{config.result_dir}/pro_raw_{model}_{dataset}.csv', index=False)
 df = df.dropna()   
      
 # ---Fine-tuning
@@ -103,8 +103,8 @@ for i, alpha in enumerate(alpha_list):
     tmp_df.loc[i, 'nll_approx'] = roc_auc_score(df['label'], list_s1)                
     tmp_df.loc[i, 'k'] = np.mean(list_k)
 
-tmp_df.to_csv(f'{config.result_dir}/tmp_our_score_{model}_{dataset}.csv', index=False)
+tmp_df.to_csv(f'{config.result_dir}/tmp_pro_{model}_{dataset}.csv', index=False)
 
 # ---Select the max score
 final_df = tmp_df[['model', 'dataset', 'baseline', 'nll_approx']].groupby(['model', 'dataset']).max().reset_index()
-final_df.to_csv(f'{config.result_dir}/our_score_{model}_{dataset}.csv', index=False)
+final_df.to_csv(f'{config.result_dir}/pro_{model}_{dataset}.csv', index=False)

@@ -52,7 +52,7 @@ def clean_text(generated_text):
             generated_text = generated_text.split(string)[0]
     return generated_text
 
-num_beams = 10
+num_beams = 1 # 10
 
 average_contradict_prob_list_beam = []
 semantic_density_list_beam = []
