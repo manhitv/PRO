@@ -109,6 +109,19 @@ for sample in tqdm(sequences):
 
                 origin_input = qa_1 + ' [SEP] ' + qa_2
                 inputs.append(origin_input)
+                
+                # -------- Utilize vLLM for this part in future for efficiency
+                # encoded_input = tokenizer(
+                #     origin_input,
+                #     return_tensors='pt',
+                #     padding=True,
+                #     truncation=True,
+                #     max_length=512
+                # ).to('cuda')
+
+                # with torch.no_grad():
+                #     prediction = model0(**encoded_input).logits
+                    
                 encoded_input = tokenizer.encode(origin_input, padding=True)
                 prediction = model0(torch.tensor(torch.tensor([encoded_input]), device='cuda:0'))['logits']
                 predicted_label = torch.argmax(prediction, dim=1)

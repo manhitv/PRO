@@ -100,6 +100,19 @@ for beam_id in range(0, num_beams):
                 qa_1 = question + ' ' + generated_texts[beam_index]
                 qa_2 = question + ' ' + most_likely_text
                 origin_input = qa_1 + ' [SEP] ' + qa_2
+                
+                # -------- Utilize vLLM for this part in future for efficiency
+                # encoded_input = tokenizer(
+                #     origin_input,
+                #     return_tensors='pt',
+                #     padding=True,
+                #     truncation=True,
+                #     max_length=512
+                # ).to('cuda')
+
+                # with torch.no_grad():
+                #     prediction = model(**encoded_input).logits[0]
+                    
                 encoded_input = tokenizer.encode(origin_input, padding=True)
                 prediction = model(torch.tensor(torch.tensor([encoded_input]), device='cuda:0'))['logits'][0]
                 prediction_softmax = softmax(prediction.cpu().detach().numpy())
@@ -119,6 +132,19 @@ for beam_id in range(0, num_beams):
             qa_2 = question + ' ' + most_likely_text
             average_likelihood = math.exp(-likelihoods[index]['average_neg_log_likelihood_of_beam_search_gen_{}'.format(beam_index)])
             origin_input = qa_1 + ' [SEP] ' + qa_2
+            
+            # -------- Utilize vLLM for this part in future for efficiency
+            # encoded_input = tokenizer(
+            #         origin_input,
+            #         return_tensors='pt',
+            #         padding=True,
+            #         truncation=True,
+            #         max_length=512
+            #     ).to('cuda')
+
+            # with torch.no_grad():
+            #     prediction = model(**encoded_input).logits[0]
+            
             encoded_input = tokenizer.encode(origin_input, padding=True)
             prediction = model(torch.tensor(torch.tensor([encoded_input]), device='cuda:0'))['logits'][0]
             prediction_softmax = softmax(prediction.cpu().detach().numpy())
