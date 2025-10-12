@@ -26,7 +26,7 @@ Generate multiple completions per prompt using beam search.
 
 ```bash
 # TriviaQA (10% of data)
-python generate_beam_search_save_all_triviaqa_coqa_cleaned_device.py \
+python generate_triviaqa.py \
   --num_generations_per_prompt=10 \
   --model='gemma-2b' \
   --fraction_of_data_to_use=0.1 \
@@ -34,7 +34,7 @@ python generate_beam_search_save_all_triviaqa_coqa_cleaned_device.py \
   --dataset='trivia_qa'
 
 # SciQ (full dataset)
-python generate_beam_search_save_all_datasets_cleaned_device.py \
+python generate_all_datasets.py \
   --num_generations_per_prompt=10 \
   --model='gemma-2b' \
   --fraction_of_data_to_use=1.0 \
@@ -42,7 +42,7 @@ python generate_beam_search_save_all_datasets_cleaned_device.py \
   --dataset='sciq'
 
 # NQ (50% of data)
-python generate_beam_search_save_all_datasets_cleaned_device.py \
+python generate_all_datasets.py \
   --num_generations_per_prompt=10 \
   --model='gemma-2b' \
   --fraction_of_data_to_use=0.5 \
@@ -53,19 +53,14 @@ python generate_beam_search_save_all_datasets_cleaned_device.py \
 ## 📊 3. Evaluation and Analysis
 🔍 Semantic Similarity and Likelihood
 ```bash
-python get_semantic_similarities_beam_search_datasets.py \
-  --generation_model='gemma-2b' \
-  --dataset={dataset_name}
+# Semantic similarities
+python get_semantic_similarities.py --generation_model='gemma-2b' --dataset={dataset_name}
 
-python get_likelihoods_beam_search_datasets_temperature.py \
-  --evaluation_model='gemma-2b' \
-  --generation_model='gemma-2b' \
-  --dataset={dataset_name} \
-  --temperature=1.0
+# Likelihood
+python get_likelihoods.py --evaluation_model='gemma-2b' --generation_model='gemma-2b' --dataset={dataset_name}
 
-python calculate_beam_search_rouge_datasets.py \
-  --model='gemma-2b' \
-  --dataset={dataset_name}
+# RougeL for correctness computation
+python calculate_rouge.py --model='gemma-2b' --dataset={dataset_name}
 ```
 
 ## ✅ PRO Score (Ours)
@@ -75,25 +70,16 @@ python pro.py --model='gemma-2b' --dataset={dataset_name}
 
 ## 📉 Baselines for Comparison
 ```bash
-python get_semantic_density_full_beam_search_unique_datasets_temperature.py \
-  --generation_model='gemma-2b' \
-  --dataset={dataset_name} \
-  --temperature=1.0
+# Semantic Density
+python get_semantic_density.py --generation_model='gemma-2b' --dataset={dataset_name}
 
-python compute_confidence_measure_beam_search_unique_temperature.py \
-  --generation_model='gemma-2b' \
-  --evaluation_model='gemma-2b' \
-  --dataset={dataset_name} \
-  --temperature=1.0
+# Other baselines
+python compute_confidence.py --generation_model='gemma-2b' --evaluation_model='gemma-2b' --dataset={dataset_name}
 
-python analyze_results_semantic_density_full_datasets_temperature.py \
-  --dataset={dataset_name} \
-  --model='gemma-2b' \
-  --temperature=1.0
+# Final results
+python analyze_results.py --dataset={dataset_name} --model='gemma-2b'
 
-python results_table_auroc.py \
-  --dataset={dataset_name} \
-  --temperature=1.0
+python results_table_auroc.py --dataset={dataset_name}
 ```
 
 ## 📓 Example Workflow
