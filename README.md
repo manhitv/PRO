@@ -26,7 +26,7 @@ Generate multiple completions per prompt using beam search.
 
 ```bash
 # TriviaQA (10% of data)
-python generate_triviaqa.py \
+python generation/generate_triviaqa.py \
   --num_generations_per_prompt=10 \
   --model='gemma-2b' \
   --fraction_of_data_to_use=0.1 \
@@ -34,7 +34,7 @@ python generate_triviaqa.py \
   --dataset='trivia_qa'
 
 # SciQ (full dataset)
-python generate_all_datasets.py \
+python generation/generate_all_datasets.py \
   --num_generations_per_prompt=10 \
   --model='gemma-2b' \
   --fraction_of_data_to_use=1.0 \
@@ -42,7 +42,7 @@ python generate_all_datasets.py \
   --dataset='sciq'
 
 # NQ (50% of data)
-python generate_all_datasets.py \
+python generation/generate_all_datasets.py \
   --num_generations_per_prompt=10 \
   --model='gemma-2b' \
   --fraction_of_data_to_use=0.5 \
@@ -54,13 +54,13 @@ python generate_all_datasets.py \
 🔍 Semantic Similarity and Likelihood
 ```bash
 # Semantic similarities
-python get_semantic_similarities.py --generation_model='gemma-2b' --dataset={dataset_name}
+python analysis/get_semantic_similarities.py --generation_model='gemma-2b' --dataset={dataset_name}
 
 # Likelihood
-python get_likelihoods.py --evaluation_model='gemma-2b' --generation_model='gemma-2b' --dataset={dataset_name}
+python analysis/get_likelihoods.py --evaluation_model='gemma-2b' --generation_model='gemma-2b' --dataset={dataset_name}
 
 # RougeL for correctness computation
-python calculate_rouge.py --model='gemma-2b' --dataset={dataset_name}
+python analysis/calculate_rouge.py --model='gemma-2b' --dataset={dataset_name}
 ```
 
 ## ✅ PRO Score (Ours)
@@ -71,15 +71,15 @@ python pro.py --model='gemma-2b' --dataset={dataset_name}
 ## 📉 Baselines for Comparison
 ```bash
 # Semantic Density
-python get_semantic_density.py --generation_model='gemma-2b' --dataset={dataset_name}
+python baselines/get_semantic_density.py --generation_model='gemma-2b' --dataset={dataset_name}
 
 # Other baselines
-python compute_confidence.py --generation_model='gemma-2b' --evaluation_model='gemma-2b' --dataset={dataset_name}
+python baselines/compute_confidence.py --generation_model='gemma-2b' --evaluation_model='gemma-2b' --dataset={dataset_name}
 
 # Final results
-python analyze_results.py --dataset={dataset_name} --model='gemma-2b'
+python baselines/analyze_results.py --dataset={dataset_name} --model='gemma-2b'
 
-python results_table_auroc.py --dataset={dataset_name}
+python baselines/results_table_auroc.py --dataset={dataset_name}
 ```
 
 ## 📓 Example Workflow
