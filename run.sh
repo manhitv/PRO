@@ -20,4 +20,3 @@ python pro.py --model='gemma-2b' --dataset={dataset_name}
 python baselines/get_semantic_density.py --generation_model='gemma-2b' --dataset={dataset_name} 
 python baselines/compute_confidence.py --generation_model='gemma-2b' --evaluation_model='gemma-2b' --dataset={dataset_name} 
 python baselines/analyze_results.py --dataset={dataset_name} --model='gemma-2b' 
-python baselines/results_table_auroc.py --dataset={dataset_name}
