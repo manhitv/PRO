@@ -2,9 +2,8 @@
 
 **_Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models_**
 
----
-Summary
----
+[Paper coming soon]()
+
 **Uncertainty estimation** plays a central role in detecting hallucinations and improving reliability in Large Language Models (LLMs). Traditional approaches, such as **predictive entropy** or **semantic entropy**, often require multiple samples or additional computation. We propose **PRO (PRobability-Only)**, an efficient, training-free uncertainty estimation method that approximates predictive entropy using __only the responses' top-K probabilities__. Moreover, we employ an __adaptive mechanism to determine K__ to enhance flexibility and filter out low-confidence probabilities. By aggregating response-level probabilities, PRO outperforms expensive baselines across multiple QA datasets, advancing LLM reliability and trustworthiness.
 
 ## 🛠️ Environment Setup
@@ -12,13 +11,19 @@ Summary
 Create a conda environment from the provided YAML file:
 
 ```bash
-conda env create -f environment.yml
+conda create -n pro-env python=3.10 pytorch=2.1 torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 conda activate pro-env
+pip install -r requirements.txt
 ```
-Ensure that the appropriate model weights (e.g., `gemma-2b`) are available locally or accessible via Hugging Face.
+Ensure that the appropriate model weights (e.g., `gemma-2b`) are available locally or accessible via HuggingFace Hub. Before running any scripts, make sure to **update file paths** in `config.py` according to your local directory structure.
 
 ## 🗂️ 1. Parse Datasets
-Preprocess and cache input prompts for each dataset:
+
+Data sources:
+* TriviaQA is loaded directly from the HuggingFace Hub.
+* SciQ and Natural Questions (NQ) are downloaded from [LitCab](https://github.com/launchnlp/LitCab). 
+
+After downloading, all datasets are preprocessed:
 ```bash
 # TriviaQA
 python parse_trivia_qa.py --model='gemma-2b'
