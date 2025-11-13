@@ -1,8 +1,12 @@
 # PRO (AAAI 2026)
 
-**_Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models_**
+**_Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models_** 
 
-[Paper coming soon]()
+📄 **Version:** [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
+
+---
+
+### 🧩 Summary
 
 **Uncertainty estimation** plays a central role in detecting hallucinations and improving reliability in Large Language Models (LLMs). Traditional approaches, such as **predictive entropy** or **semantic entropy**, often require multiple samples or additional computation. We propose **PRO (PRobability-Only)**, an efficient, training-free uncertainty estimation method that approximates predictive entropy using __only the responses' top-K probabilities__. Moreover, we employ an __adaptive mechanism to determine K__ to enhance flexibility and filter out low-confidence probabilities. By aggregating response-level probabilities, PRO outperforms expensive baselines across multiple QA datasets, advancing LLM reliability and trustworthiness.
 
