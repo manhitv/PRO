@@ -4,7 +4,8 @@
 
 - Preprint: [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
 
-- Poster: [AAAI 2026](PRO_poster.pdf)
+---
+![](assets/PRO_poster.png)
 
 ---
 
