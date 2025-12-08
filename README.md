@@ -1,8 +1,10 @@
 # PRO (AAAI 2026)
 
-**_Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models_** 
+**Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models** 
 
-📄 **Version:** [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
+- Preprint: [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
+
+- Poster: [AAAI 2026](PRO_poster.pdf)
 
 ---
 
