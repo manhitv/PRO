@@ -103,3 +103,12 @@ python baselines/analyze_results.py --dataset={dataset_name} --model='gemma-2b'
 ```bash
 bash run.sh
 ```
+## Citation
+```bash
+@inproceedings{nguyen2025probabilities,
+  title={Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models},
+  author={Nguyen, Manh and Gupta, Sunil and Le, Hung},
+  booktitle={Proceedings of the 40th AAAI Conference on Artificial Intelligence},
+  year={2026}
+}
+```
