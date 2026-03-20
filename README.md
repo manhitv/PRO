@@ -2,7 +2,7 @@
 
 **Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models** 
 
-- Preprint: [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
+- Versions: [Proceeding](https://ojs.aaai.org/index.php/AAAI/article/view/40531) | [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
 
 ---
 ![](assets/PRO_poster.png)
@@ -108,7 +108,8 @@ bash run.sh
 @inproceedings{nguyen2025probabilities,
   title={Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models},
   author={Nguyen, Manh and Gupta, Sunil and Le, Hung},
-  booktitle={Proceedings of the 40th AAAI Conference on Artificial Intelligence},
-  year={2026}
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  year={2026},
+  pages={32546--32554}
 }
 ```
