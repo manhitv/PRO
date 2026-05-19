@@ -15,8 +15,6 @@
 
 > 📜 **Paper:** *Probabilities Are All You Need: A Probability-Only Approach to Uncertainty
 > Estimation in Large Language Models* — AAAI 2026.
-> Versions: [Proceedings](https://ojs.aaai.org/index.php/AAAI/article/view/40531) · [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
-
 ---
 
 ![PRO poster](assets/PRO_poster.png)
