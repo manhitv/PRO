@@ -1,11 +1,25 @@
-# PRO (AAAI 2026)
+<div align="center">
+<img src="assets/pro_logo.svg" height=140 alt="PRO">
+  <h1><b> PRO: Probabilities Are All You Need </b></h1>
+  <p><i>Training-free uncertainty estimation for LLMs — from top-K probabilities alone.</i></p>
+</div>
 
-**Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models** 
+<div align="center">
 
-- Versions: [Proceeding](https://ojs.aaai.org/index.php/AAAI/article/view/40531) | [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
+[![AAAI 2026](https://img.shields.io/badge/AAAI-2026-1f6feb)](https://ojs.aaai.org/index.php/AAAI/article/view/40531)
+[![arXiv](https://img.shields.io/badge/arXiv-2511.07694-b31b1b)](https://arxiv.org/abs/2511.07694)
+[![Python](https://img.shields.io/badge/Python-3.10-blue)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/Powered_by-PyTorch-ee4c2c)](https://pytorch.org/)
+
+</div>
+
+> 📜 **Paper:** *Probabilities Are All You Need: A Probability-Only Approach to Uncertainty
+> Estimation in Large Language Models* — AAAI 2026.
+> Versions: [Proceedings](https://ojs.aaai.org/index.php/AAAI/article/view/40531) · [arXiv:2511.07694](https://arxiv.org/abs/2511.07694)
 
 ---
-![](assets/PRO_poster.png)
+
+![PRO poster](assets/PRO_poster.png)
 
 ---
 
@@ -104,7 +118,7 @@ python baselines/analyze_results.py --dataset={dataset_name} --model='gemma-2b'
 bash run.sh
 ```
 ## Citation
-```bash
+```bibtex
 @inproceedings{nguyen2025probabilities,
   title={Probabilities Are All You Need: A Probability-Only Approach to Uncertainty Estimation in Large Language Models},
   author={Nguyen, Manh and Gupta, Sunil and Le, Hung},
